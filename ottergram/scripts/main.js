@@ -5,15 +5,8 @@ var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
 var HIDDEN_DETAIL_CLASS = 'hidden-detail';
 var TINY_EFFECT_CLASS = 'is-tiny';
 var ESC_KEY = 27;
-var KEY_ONE = 49;
-var KEY_TWO = 50;
-var KEY_THREE = 51;
-var KEY_FOUR = 52;
-var KEY_FIVE = 53;
-var KEY_SIX = 54;
-var KEY_SEVEN = 55;
-var KEY_EIGHT = 56;
-var KEY_NINE = 57;
+var KEY_ZERO = 48;
+
 //var otterOneImage = 'img/otter1.jpg';
 //var otterOneTitle = 'Stayin\' Alive';
 
@@ -84,45 +77,13 @@ function addKeyPressHandler() {
     document.body.addEventListener('keyup', function(event) {
         event.preventDefault();
         var dynamicThumbnails = getThumbnailsArray();
-        //console.log(event.keyCode);
+        console.log(event.keyCode);
         if (event.keyCode === ESC_KEY) {
             hideDetails();
         }
-        if (event.keyCode === KEY_ONE) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[0]);
-        }
-        if (event.keyCode === KEY_TWO) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[1]);
-        }
-        if (event.keyCode === KEY_THREE) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[2]);
-        }
-        if (event.keyCode === KEY_FOUR) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[3]);
-        }
-        if (event.keyCode === KEY_FIVE) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[4]);
-        }
-        if (event.keyCode === KEY_SIX) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[5]);
-        }
-        if (event.keyCode === KEY_SEVEN) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[6]);
-        }
-        if (event.keyCode === KEY_EIGHT) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[7]);
-        }
-        if (event.keyCode === KEY_NINE) {
-            showDetails();
-            setDetailsFromThumb(dynamicThumbnails[8]);
+        if (event.keyCode > KEY_ZERO && event.keyCode <= KEY_ZERO + dynamicThumbnails.length) {
+            setDetailsFromThumb(dynamicThumbnails[event.keyCode - KEY_ZERO - 1]);
+
         }
     });
 }
